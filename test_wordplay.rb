@@ -12,9 +12,18 @@ class TestWordPlay < MiniTest::Test
         assert_equal(%w{these are mostly words}, "these, are, mostly, words".words)
     end
     def test_sentence_choice
-        assert_equal('This is a great test', WordPlay.best_sentence(
-            ['This is a test', 
-            'This is another test',
-            'This is a great test'], %w{test great this}))
+        assert_equal('This is a great test', WordPlay.best_sentence(['This is a test', 'This is another test','This is a great test'], %w{test great this}))
+        assert_equal('This is a great test', WordPlay.best_sentence(['This is a great test'], %w{still the best}))
+    end
+    def test_basic_pronouns
+        assert_equal('your cat is fighting with my cat', WordPlay.switch_pronouns('My cat is fighting with your cat'))
+        assert_equal('i am a robot', WordPlay.switch_pronouns('you are a robot'))
+        assert_equal('you are a person', WordPlay.switch_pronouns('I am a person'))
+        assert_equal('i love you', WordPlay.switch_pronouns('you love me'))
+    end
+    def test_mixed_pronouns
+        assert_equal("you gave me life", WordPlay.switch_pronouns("i gave you life"))
+        assert_equal("i am not what you are", WordPlay.switch_pronouns("you are not what i am"))
+        assert_equal("i annoy your dog", WordPlay.switch_pronouns("you annoy my dog"))
     end
 end
