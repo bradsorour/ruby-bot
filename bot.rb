@@ -2,7 +2,7 @@ require 'yaml'
 require_relative 'wordplay'
 
 class Bot
-    attr_reader: name
+    attr_reader :name
     def initialize(options)
         @name = options[:name] || "Unamed Bot"
         begin
@@ -36,7 +36,7 @@ class Bot
         perform_substitutions input
     end
 
-    def perform_substitutions
+    def perform_substitutions(input)
         @data[:presubs].each { |s| input.gsub!(s[0], s[1]) }
         input
     end
@@ -60,7 +60,7 @@ class Bot
                 # If the pattern contains substitution placeholders,
                 # perform the substitutions
                 if pattern.include?('*')
-                    responses << @data[:responses][:pattern].collect do |phrase|
+                    responses << @data[:responses][pattern].collect do |phrase|
                         # First, erase everything before the placeholder
                         # leaving everything after it
                         matching_section = sentence.sub(/^.*#{pattern}\s+/, '')
@@ -75,7 +75,7 @@ class Bot
             end
         end
         # If there were no matches, add the default ones
-        responses << @data[:response][:default] if responses.empty?
+        responses << @data[:responses][:default] if responses.empty?
         # Flatten the blocks of responses to a flat array
         responses.flatten
     end

@@ -36,17 +36,17 @@ class WordPlay
     end
 end
 
-p %q{Hello. This is a test of
-basic sentence splitting. It 
-even works over multiple lines.}.sentences
+# p %q{Hello. This is a test of
+# basic sentence splitting. It 
+# even works over multiple lines.}.sentences
 
-p "This is a test of words".words
+# p "This is a test of words".words
 
-p %q{Hello. This is a test of
-basic sentence splitting. It 
-even works over multiple lines.}.sentences[1].words[3]
+# p %q{Hello. This is a test of
+# basic sentence splitting. It 
+# even works over multiple lines.}.sentences[1].words[3]
 
-p WordPlay.switch_pronouns("Your cat is fighting with my cat")
-p WordPlay.switch_pronouns("You are my robot")
-p WordPlay.switch_pronouns("I gave you hope")
-p WordPlay.switch_pronouns("You gave me hope")
+# p WordPlay.switch_pronouns("Your cat is fighting with my cat")
+# p WordPlay.switch_pronouns("You are my robot")
+# p WordPlay.switch_pronouns("I gave you hope")
+# p WordPlay.switch_pronouns("You gave me hope")
